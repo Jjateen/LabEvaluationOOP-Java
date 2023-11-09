@@ -20,13 +20,14 @@ public class HOD extends Employee {
             System.out.println("Employee Department: " + e.getQualification());
         }
     }
-    void editEmployee(int nuserID,String newUserName,String npassword,String nuserRole,String ndepartment, String ncontact, String nnationality, String nqualification) {
-        Employee employee = getEmployeeByID(userID);
-        if (employee != null) {
-            employee.updateDetailsEmployee(nuserID,newUserName,npassword,nuserRole,ndepartment,ncontact,nnationality,nqualification);
-            System.out.println("Employee details updated successfully.");
-        } else {
-            System.out.println("Employee not found.");
+    void editEmployee(int nuserID, String newUserName, String npassword, String nuserRole, String ndepartment, String ncontact, String nnationality, String nqualification) {
+        for (Employee e : a) {
+            if (e.userID == nuserID) {
+                e.updateDetailsEmployee(nuserID, newUserName, npassword, nuserRole, ndepartment, ncontact, nnationality, nqualification);
+                System.out.println("Employee details updated successfully.");
+                return;
+            }
         }
+        System.out.println("Employee not found.");
     }
 }
