@@ -21,13 +21,25 @@ public class HRAdmin extends Employee {
             }
         }
     }
-    void editEmployee(int nuserID,String newUserName,String npassword,String nuserRole,String ndepartment, String ncontact, String nnationality, String nqualification) {
-        Employee employee = getEmployeeByID(userID);
-        if (employee != null) {
-            employee.updateDetailsEmployee(nuserID,newUserName,npassword,nuserRole,ndepartment,ncontact,nnationality,nqualification);
-            System.out.println("Employee details updated successfully.");
-        } else {
-            System.out.println("Employee not found.");
+    void viewEmployees() {
+        for(Employee e: a) {
+                System.out.println("Employee ID: " + e.getUserID());
+                System.out.println("Employee Name: " + e.getUserName());
+                System.out.println("Employee userRole: " + e.getUserRole());
+                System.out.println("Employee Department: " + e.getDepartment());
+                System.out.println("Employee Contact: " + e.getContact());
+                System.out.println("Employee Nationality: " + e.getNationality());
+                System.out.println("Employee Qualification: " + e.getQualification());
         }
+    }
+    void editEmployee(int nuserID, String newUserName, String npassword, String nuserRole, String ndepartment, String ncontact, String nnationality, String nqualification) {
+        for (Employee e : a) {
+            if (e.userID == nuserID) {
+                e.updateDetailsEmployee(nuserID, newUserName, npassword, nuserRole, ndepartment, ncontact, nnationality, nqualification);
+                System.out.println("Employee details updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Employee not found.");
     }
 }
